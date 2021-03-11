@@ -13,6 +13,95 @@ webpackEmptyContext.id = "./src async recursive";
 
 /***/ }),
 
+/***/ "./src/app/activate/activate.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\r\ndiv{\r\n  width: 100%;\r\n  height: 50px;\r\n}\r\n\r\n.center{\r\n  margin: 0 auto;\r\n  width: 300px;\r\n  height: 50px;\r\n}\r\n\r\n.linkInvalid{\r\n  background-color: rgb(175, 113, 113);\r\n}\r\n\r\n.linkValid{\r\n  background-color: darkgreen;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/activate/activate.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<div [ngClass]=\"{\n                    'linkValid': valid,\n                    'linkInvalid': invalid\n                  }\">\n  <div class=\"center\" >\n    <div style=\"color: white;\"  *ngIf=\"valid\">\n      <p>USPJEŠNA AKTIVACIJA</p>\n      <a style=\"color: white;\" routerLink=\"/login\">Idi na prijavu</a>\n    </div>\n    <div style=\"color: white;\">\n      <p *ngIf=\"invalid\">NEVAŽEĆI LINK</p>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/activate/activate.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt__ = __webpack_require__("./node_modules/angular2-jwt/angular2-jwt.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_jwt__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivateComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ActivateComponent = (function () {
+    function ActivateComponent(route, router, authService) {
+        this.route = route;
+        this.router = router;
+        this.authService = authService;
+    }
+    ActivateComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        //console.log('ngOnInit');
+        //this.idUser = +this.route.snapshot.paramMap.get('id');
+        this.kod = this.route.snapshot.paramMap.get('kod');
+        this.authService.register(this.kod, new __WEBPACK_IMPORTED_MODULE_2_angular2_jwt__["JwtHelper"]().decodeToken(this.kod))
+            .subscribe(function (result) {
+            console.log(result);
+            if (result) {
+                _this.valid = true;
+                _this.invalid = false;
+            }
+            else {
+                _this.invalid = true;
+                _this.valid = false;
+            }
+        });
+    };
+    ;
+    return ActivateComponent;
+}());
+ActivateComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'activate',
+        template: __webpack_require__("./src/app/activate/activate.component.html"),
+        styles: [__webpack_require__("./src/app/activate/activate.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_auth_service__["a" /* AuthService */]) === "function" && _c || Object])
+], ActivateComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=activate.component.js.map
+
+/***/ }),
+
 /***/ "./src/app/admin/admin.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -160,6 +249,8 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__admin_admin_component__ = __webpack_require__("./src/app/admin/admin.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__not_found_not_found_component__ = __webpack_require__("./src/app/not-found/not-found.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__no_access_no_access_component__ = __webpack_require__("./src/app/no-access/no-access.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__activate_activate_component__ = __webpack_require__("./src/app/activate/activate.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -167,6 +258,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -197,7 +290,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_13__admin_admin_component__["a" /* AdminComponent */],
             __WEBPACK_IMPORTED_MODULE_10__home_home_component__["a" /* HomeComponent */],
             __WEBPACK_IMPORTED_MODULE_14__not_found_not_found_component__["a" /* NotFoundComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__no_access_no_access_component__["a" /* NoAccessComponent */]
+            __WEBPACK_IMPORTED_MODULE_15__no_access_no_access_component__["a" /* NoAccessComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__activate_activate_component__["a" /* ActivateComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__register_register_component__["a" /* RegisterComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["a" /* BrowserModule */],
@@ -210,7 +305,11 @@ AppModule = __decorate([
                     component: __WEBPACK_IMPORTED_MODULE_13__admin_admin_component__["a" /* AdminComponent */],
                     canActivate: [__WEBPACK_IMPORTED_MODULE_1__services_auth_guard_service__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_0__services_admin_auth_guard_service__["a" /* AdminAuthGuard */]]
                 },
+                { path: 'register', component: __WEBPACK_IMPORTED_MODULE_17__register_register_component__["a" /* RegisterComponent */] },
                 { path: 'login', component: __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */] },
+                { path: 'activate', component: __WEBPACK_IMPORTED_MODULE_16__activate_activate_component__["a" /* ActivateComponent */] },
+                { path: 'activate/:kod', component: __WEBPACK_IMPORTED_MODULE_16__activate_activate_component__["a" /* ActivateComponent */] },
+                // { path: 'activate/:id/:kod', component: ActivateComponent },
                 { path: 'no-access', component: __WEBPACK_IMPORTED_MODULE_15__no_access_no_access_component__["a" /* NoAccessComponent */] },
                 { path: '**', component: __WEBPACK_IMPORTED_MODULE_14__not_found_not_found_component__["a" /* NotFoundComponent */] }
             ])
@@ -252,7 +351,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<h1>Home Page</h1>\n<p *ngIf=\"authService.isLoggedIn()\">\n  Welcome {{ authService.currentUser.name }}\n</p>\n<ul>\n  <li *ngIf=\"authService.isLoggedIn() && authService.currentUser.admin\">\n    <a routerLink=\"/admin\">Admin</a>\n  </li>\n  <li *ngIf=\"!authService.isLoggedIn()\"><a routerLink=\"/login\">Login</a></li>\n  <li *ngIf=\"authService.isLoggedIn()\"><a (click)=\"authService.logout()\">Logout</a></li>\n</ul>\n"
+module.exports = "\n<h1>Home Page</h1>\n<p *ngIf=\"authService.isLoggedIn()\">\n  Welcome {{ authService.currentUser.name }}\n</p>\n<ul>\n  <li *ngIf=\"authService.isLoggedIn() && authService.currentUser.admin\">\n    <a routerLink=\"/admin\">Admin</a>\n  </li>\n  <li *ngIf=\"!authService.isLoggedIn()\"><a routerLink=\"/login\">Login</a></li>\n  <li *ngIf=\"!authService.isLoggedIn()\"><a routerLink=\"/register\">Register</a></li>\n  <li *ngIf=\"authService.isLoggedIn()\"><a (click)=\"authService.logout()\">Logout</a></li>\n</ul>\n"
 
 /***/ }),
 
@@ -495,6 +594,86 @@ NotFoundComponent = __decorate([
 
 /***/ }),
 
+/***/ "./src/app/register/register.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".form-signin {\r\n  max-width: 330px;\r\n  padding: 15px;\r\n  margin: 0 auto;\r\n}\r\n.form-signin .form-signin-heading,\r\n.form-signin .checkbox {\r\n  margin-bottom: 10px;\r\n}\r\n.form-signin .checkbox {\r\n  font-weight: normal;\r\n}\r\n.form-signin .form-control {\r\n  position: relative;\r\n  height: auto;\r\n  box-sizing: border-box;\r\n  padding: 10px;\r\n  font-size: 16px;\r\n}\r\n.form-signin .form-control:focus {\r\n  z-index: 2;\r\n}\r\n.form-signin input[type=\"email\"] {\r\n  margin-bottom: -1px;\r\n  border-bottom-right-radius: 0;\r\n  border-bottom-left-radius: 0;\r\n}\r\n.form-signin input[type=\"password\"] {\r\n  margin-bottom: 10px;\r\n  border-top-left-radius: 0;\r\n  border-top-right-radius: 0;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<form class=\"form-signin\" #f=\"ngForm\" (ngSubmit)=\"register(f.value)\">\n  <h2 class=\"form-signin-heading\">Please register</h2>\n  <div *ngIf=\"isRegistered\" class=\"alert alert-danger\">\n    <p>Poslan je mail na vašu adresu.</p>\n  </div>\n  <label for=\"inputName\" class=\"sr-only\">Name</label>\n  <input\n    id=\"inputName\"\n    name=\"Name\"\n    ngModel\n    class=\"form-control\"\n    placeholder=\"Name\"\n    required\n    autofocus\n  />\n  <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n  <input\n    type=\"email\"\n    id=\"inputEmail\"\n    name=\"Email\"\n    ngModel\n    class=\"form-control\"\n    placeholder=\"Email address\"\n    required\n    autofocus\n  />\n  <label for=\"inputUsername\" class=\"sr-only\">Username</label>\n  <input\n    id=\"inputUsername\"\n    name=\"Username\"\n    ngModel\n    class=\"form-control\"\n    placeholder=\"Username\"\n    required\n    autofocus\n  />\n  <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n  <input\n    type=\"password\"\n    id=\"inputPassword\"\n    name=\"Password\"\n    ngModel\n    class=\"form-control\"\n    placeholder=\"Password\"\n    required\n  />\n  <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">\n    Register\n  </button>\n</form>\n"
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var RegisterComponent = (function () {
+    function RegisterComponent(authService) {
+        this.authService = authService;
+    }
+    RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent.prototype.register = function (userData) {
+        var _this = this;
+        this.authService.sendEmail(userData)
+            .subscribe(function (result) {
+            if (result) {
+                _this.isRegistered = true;
+                // this.authService.sendemail(registerToken)
+                // .subscribe(result => {
+                //   if (result){
+                //     this.isRegistered = true;
+                //   }
+                // });
+            }
+        });
+    };
+    return RegisterComponent;
+}());
+RegisterComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'register',
+        template: __webpack_require__("./src/app/register/register.component.html"),
+        styles: [__webpack_require__("./src/app/register/register.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+], RegisterComponent);
+
+var _a;
+//# sourceMappingURL=register.component.js.map
+
+/***/ }),
+
 /***/ "./src/app/services/admin-auth-guard.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -606,10 +785,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.url = 'http://localhost:52578/api/Authentification/ValidateUser?userName=';
+        this.url = 'http://localhost:52578/api/Authentification/ValidateUser?Email=';
+        this.urlRegister = 'http://localhost:52578/api/Account';
+        // urlSendMail='http://localhost:52578/api/SendEmail?userId=';
+        this.urlSendMail = 'http://localhost:52578/api/SendEmail';
     }
     AuthService.prototype.login = function (credentials) {
-        //post vraća Observable<Response>, a pošto mi ne želimo da otkrijemo Response objekat vratit ćemo true ili false pa zato koristimo MAP metodu.
+        // tslint:disable-next-line:max-line-length
+        // post vraća Observable<Response>, a pošto mi ne želimo da otkrijemo Response objekat vratit ćemo true ili false pa zato koristimo MAP metodu.
         //  return this.http.post('/api/authenticate',
         //     JSON.stringify(credentials)).map(response => {
         //       let result = response.json();
@@ -628,6 +811,68 @@ var AuthService = (function () {
             }
             return false;
         });
+    };
+    AuthService.prototype.register = function (token, tokenUserData) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Authorization', 'Bearer ' + token);
+        headers.append('Content-Type', 'application/json');
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["RequestOptions"]({ headers: headers });
+        return this.http.post(this.urlRegister, JSON.stringify(tokenUserData), options)
+            .map(function (response) {
+            var result = response.json();
+            console.log(response);
+            if (result && result.status === 'Valid') {
+                //localStorage.setItem('registerToken', result.registerToken);
+                //console.log(result.registerToken);
+                return true; // new JwtHelper().decodeToken(result.registerToken);
+            }
+            return false;
+        });
+    };
+    // activateUser(id){
+    //   const headers = new Headers(); // nalazi se u http biblioteci
+    //   const token = localStorage.getItem('sendEmailToken');
+    //   headers.append('Authorization', 'Bearer ' + token);
+    //   headers.append('Content-Type', 'application/json');
+    //   headers.append('Method', 'PUT');
+    //   const options = new RequestOptions({ headers: headers });
+    //   //console.log(this.urlRegister + '?id=' + id);
+    //   return this.http.put(this.urlRegister + '/Activate' + '?id=' + id, JSON.stringify(''), options)
+    //     .map(response => {
+    //       const result = response.json();
+    //       console.log(result);
+    //       if (result && result.status === 'Valid') {
+    //         localStorage.removeItem('sendEmailToken');
+    //         return true;
+    //       }
+    //       return false;
+    //     });
+    // }
+    AuthService.prototype.sendEmail = function (userData) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"](); // nalazi se u http biblioteci
+        //headers.append('Authorization', 'Bearer ' + localStorage.getItem('registerToken'));
+        headers.append('Content-Type', 'application/json');
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["RequestOptions"]({ headers: headers });
+        return this.http.post(this.urlSendMail, JSON.stringify(userData), options)
+            .map(function (response) {
+            var result = response.json();
+            if (result && result.status === 'Valid') {
+                //localStorage.setItem('sendEmailToken', result.sendEmailToken);
+                //localStorage.removeItem('registerToken');
+                return true;
+            }
+            return false;
+        });
+        // return this.http.get(this.urlSendMail + registerToken.userid + '&email=' + registerToken.email, options)
+        // .map(response => {
+        //   const result = response.json();
+        //   if (result && result.sendEmailToken) {
+        //     localStorage.setItem('sendEmailToken', result.sendEmailToken);
+        //     localStorage.removeItem('registerToken');
+        //     return true;
+        //   }
+        //   return false;
+        // });
     };
     AuthService.prototype.logout = function () {
         localStorage.removeItem('token');
