@@ -1,0 +1,15 @@
+
+<div [ngClass]="{
+                    'linkValid': valid,
+                    'linkInvalid': invalid
+                  }">
+  <div class="center" >
+    <div style="color: white;"  *ngIf="valid">
+      <p>USPJEŠNA AKTIVACIJA</p>
+      <a style="color: white;" routerLink="/login">Idi na prijavu</a>
+    </div>
+    <div style="color: white;">
+      <p *ngIf="invalid">NEVAŽEĆI LINK</p>
+    </div>
+  </div>
+</div>

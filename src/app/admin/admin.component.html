@@ -1,6 +1,6 @@
 
 <h1>Admin</h1>
-<h2>Orders</h2>
+<h2>Parametri tokena</h2>
 <ul>
-  <li *ngFor="let order of orders">{{ order }}</li>
+  <li *ngFor="let tokenParam of tokenParams">{{ tokenParam.m_type + ' - ' + tokenParam.m_value }}</li>
 </ul>
